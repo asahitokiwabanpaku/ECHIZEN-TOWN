@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETHIZEN TOWN</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+
+:root {
+    --main: #00d5ff;
+    --neon: #05ffff;
+    --bg: #01010f;
+    --text: #e2e8f0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+#particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left:0;
+    z-index: -1;
+    background:black;
+}
+
+header {
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+header h1 {
+    font-size:5rem;
+    font-weight: 800;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    background:linear-gradient(90deg, #00eaff, #0051ff);
+    -webkit-background-clip:text;
+    color:transparent;
+    animation: glow 2.5s infinite alternate;
+}
+
+header p {
+    font-size:1.3rem;
+    opacity:0.7;
+    margin-top:10px;
+}
+
+.scroll {
+    margin-top:50px;
+    font-size:1.2rem;
+    animation: blink 1.5s infinite;
+}
+
+.section {
+    max-width:1100px;
+    margin:100px auto;
+    padding:20px;
+    opacity:0;
+    transform:translateY(60px) scale(0.97);
+    transition:1s cubic-bezier(0.17, 0.67, 0.32, 1.3);
+}
+
+.section.visible {
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+.sec-title {
+    font-size:2.6rem;
+    text-align:center;
+    margin-bottom:40px;
+    color:var(--main);
+    text-shadow:0 0 15px var(--neon);
+}
+
+.card-area {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:25px;
+}
+
+.card {
+    background:rgba(255,255,255,0.04);
+    padding:25px;
+    border-radius:18px;
+    border:1px solid rgba(0,255,255,0.15);
+    backdrop-filter:blur(6px);
+    transition:0.35s;
+    font-size:1.1rem;
+}
+
+.card:hover {
+    transform:translateY(-12px) scale(1.03);
+    border-color:var(--neon);
+    box-shadow:0 0 25px var(--neon);
+}
+
+/* 🔥追加:スクロールで光るカード */
+.card.glow {
+    border-color: var(--neon);
+    box-shadow: 0 0 18px rgba(0,255,255,0.8), 0 0 35px rgba(0,255,255,0.5);
+    transform: translateY(-5px) scale(1.05);
+    transition: .8s ease-out;
+}
+
+.buttons {
+    text-align:center;
+    margin-top:40px;
+}
+
+.btn {
+    display:inline-block;
+    padding:15px 45px;
+    margin:10px;
+    border:2px solid var(--neon);
+    color:var(--neon);
+    font-size:1.3rem;
+    font-weight:bold;
+    border-radius:40px;
+    text-decoration:none;
+    transition:0.4s;
+}
+
+.btn:hover {
+    color:black;
+    background:var(--neon);
+    transform:scale(1.15);
+    box-shadow:0 0 30px var(--neon);
+}
+
+@keyframes glow {
+    from { text-shadow:0 0 8px var(--neon); }
+    to { text-shadow:0 0 40px var(--neon); }
+}
+
+@keyframes blink {
+    50% {opacity:0.4;}
+}
+
+footer {
+    text-align:center;
+    padding:40px;
+    margin-top:100px;
+    opacity:0.6;
+    font-size:1rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<header>
+    <h1>ETHIZEN TOWN</h1>
+    <p>未来を変えるのは大人ではなく、挑戦する若者だ。</p>
+    <div class="scroll">▼ SCROLL ▼</div>
+</header>
+
+<div class="section">
+    <h2 class="sec-title">⚡ MISSION</h2>
+    <div class="card-area">
+        <div class="card">越前町を日本だけでなく世界へ届ける。</div>
+        <div class="card">地元の価値をテクノロジーで変える。</div>
+        <div class="card">学生でも街を作れることを証明する。</div>
+        <div class="card">地域×発想で新しい未来を作る。</div>
+    </div>
+</div>
+
+<div class="section">
+    <h2 class="sec-title">🔥 PROJECTS</h2>
+    <div class="card-area">
+        <div class="card">🎥 YouTube企画制作</div>
+        <div class="card">🌍 町のデジタルアーカイブ</div>
+        <div class="card">💻 Web開発・デザイン</div>
+        <div class="card">🎤 インタビュー・イベント参加</div>
+        <div class="card">🏞 観光調査・バズ戦略研究</div>
+    </div>
+</div>
+
+<div class="section">
+    <h2 class="sec-title">📡SNS</h2>
+    <div class="buttons">
+        <a class="btn" href="https://www.youtube.com/@朝日常磐/shorts" target="_blank">YouTube</a>
+        <a class="btn" href="https://www.tiktok.com/@pr43567" target="_blank">TikTok</a>
+    </div>
+</div>
+
+<div class="section">
+    <h2 class="sec-title">🚀 GOALS</h2>
+    <div class="card-area">
+        <div class="card">🌎 観光×デジタル発信のモデルケース化</div>
+        <div class="card">🏆 全国区プロジェクトに育てる</div>
+        <div class="card">🔥 メディア出演・取材レベルへ</div>
+        <div class="card">📈 SNS総フォロワー1万人以上</div>
+    </div>
+</div>
+
+<footer>© 2025 朝日小学校5年生 宣伝・PRチーム</footer>
+
+<script>
+// ===== SECTION FADE =====
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', () => {
+    sections.forEach(section => {
+        if(section.getBoundingClientRect().top < window.innerHeight - 120){
+            section.classList.add('visible');
+        }
+    });
+});
+
+// ===== ⭐スクロールでカード順番に光る =====
+const cards = document.querySelectorAll('.card');
+let glowIndex = 0;
+
+function glowCards(){
+    if(glowIndex < cards.length){
+        cards[glowIndex].classList.add("glow");
+        glowIndex++;
+        setTimeout(glowCards, 350); // ←光るスピード調整できる
+    }
+}
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 150 && glowIndex === 0){
+        glowCards();
+    }
+});
+
+// ===== Particle effect =====
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+let particles=[];
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+
+for(let i=0;i<120;i++){
+    particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*2,
+        dx:(Math.random()-0.5)*0.6,
+        dy:(Math.random()-0.5)*0.6
+    });
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle="#00ffff";
+        ctx.fill();
+        p.x+=p.dx;
+        p.y+=p.dy;
+        if(p.x<0||p.x>canvas.width)p.dx*=-1;
+        if(p.y<0||p.y>canvas.height)p.dy*=-1;
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
