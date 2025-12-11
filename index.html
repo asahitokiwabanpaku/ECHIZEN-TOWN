@@ -109,7 +109,6 @@ header p {
     box-shadow:0 0 25px var(--neon);
 }
 
-/* 🔥追加:スクロールで光るカード */
 .card.glow {
     border-color: var(--neon);
     box-shadow: 0 0 18px rgba(0,255,255,0.8), 0 0 35px rgba(0,255,255,0.5);
@@ -158,7 +157,6 @@ footer {
     opacity:0.6;
     font-size:1rem;
 }
-
 </style>
 </head>
 
@@ -224,18 +222,16 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ===== ⭐スクロールでカード順番に光る =====
+// ===== ⭐スクロールでカード光らせる =====
 const cards = document.querySelectorAll('.card');
 let glowIndex = 0;
-
 function glowCards(){
     if(glowIndex < cards.length){
         cards[glowIndex].classList.add("glow");
         glowIndex++;
-        setTimeout(glowCards, 350); // ←光るスピード調整できる
+        setTimeout(glowCards, 350);
     }
 }
-
 window.addEventListener("scroll", () => {
     if(window.scrollY > 150 && glowIndex === 0){
         glowCards();
@@ -245,10 +241,9 @@ window.addEventListener("scroll", () => {
 // ===== Particle effect =====
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
-let particles=[];
-canvas.width=innerWidth;
-canvas.height=innerHeight;
-
+let particles = [];
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 for(let i=0;i<120;i++){
     particles.push({
         x:Math.random()*canvas.width,
@@ -258,22 +253,49 @@ for(let i=0;i<120;i++){
         dy:(Math.random()-0.5)*0.6
     });
 }
-
-function animate(){
+function animateParticles(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     particles.forEach(p=>{
         ctx.beginPath();
         ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
         ctx.fillStyle="#00ffff";
         ctx.fill();
-        p.x+=p.dx;
-        p.y+=p.dy;
+        p.x += p.dx;
+        p.y += p.dy;
         if(p.x<0||p.x>canvas.width)p.dx*=-1;
         if(p.y<0||p.y>canvas.height)p.dy*=-1;
     });
-    requestAnimationFrame(animate);
+    // Mouse particles
+    if(mouse.x && mouse.y){
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, Math.random()*3+1, 0, Math.PI*2);
+        ctx.fillStyle = "#05ffff";
+        ctx.fill();
+    }
+    requestAnimationFrame(animateParticles);
 }
-animate();
+animateParticles();
+
+// ===== Neon Header Pulse =====
+const title = document.querySelector('header h1');
+function pulseGlow() {
+    title.style.textShadow = "0 0 20px var(--neon), 0 0 40px var(--neon)";
+    setTimeout(()=>title.style.textShadow = "", 600);
+}
+setInterval(pulseGlow, 2500);
+
+// ===== Mouse Tracking =====
+const mouse = { x:null, y:null };
+window.addEventListener("mousemove", e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+});
+
+// ===== Scroll Background Shift =====
+window.addEventListener("scroll", () => {
+    const sc = window.scrollY / document.body.scrollHeight;
+    document.body.style.background = `hsl(${sc*360}, 30%, 10%)`;
+});
 </script>
 
 </body>
