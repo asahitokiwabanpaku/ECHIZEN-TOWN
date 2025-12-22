@@ -166,7 +166,7 @@ footer {
 <canvas id="particles"></canvas>
 
 <header>
-    <h1>ETHIZEN TOWN</h1>
+    <h1>ECHIZEN TOWN</h1>
     <p>未来を変えるのは大人ではなく、挑戦する若者だ。</p>
     <div class="scroll">▼ SCROLL ▼</div>
 </header>
@@ -193,7 +193,7 @@ footer {
 </div>
 
 <div class="section">
-    <h2 class="sec-title">📡SNS</h2>
+    <h2 class="sec-title">📡 SNS</h2>
     <div class="buttons">
         <a class="btn" href="https://www.youtube.com/@朝日常磐/shorts" target="_blank">YouTube</a>
         <a class="btn" href="https://www.tiktok.com/@pr43567" target="_blank">TikTok</a>
@@ -266,7 +266,6 @@ function animateParticles(){
         if(p.x<0||p.x>canvas.width)p.dx*=-1;
         if(p.y<0||p.y>canvas.height)p.dy*=-1;
     });
-    // Mouse particles
     if(mouse.x && mouse.y){
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, Math.random()*3+1, 0, Math.PI*2);
